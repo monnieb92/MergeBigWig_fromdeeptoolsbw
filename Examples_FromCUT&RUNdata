@@ -1,0 +1,130 @@
+```{bash}
+##new bamcoverage files 
+(Deeptools_April2020) 4617-S5_bw % bamCoverage -b ../4617_bam/4617-MB-5.hg19.32020.sorted.F4q10.bam -bs 20 -p 6 -of 'bigwig' -o Kas_flag_S5_minusdT.A.normTC.bs20.bw --scaleFactor 1.43
+bamFilesList: ['../4617_bam/4617-MB-5.hg19.32020.sorted.F4q10.bam']
+binLength: 20
+numberOfSamples: None
+blackListFileName: None
+skipZeroOverZero: False
+bed_and_bin: False
+genomeChunkSize: None
+defaultFragmentLength: read length
+numberOfProcessors: 6
+verbose: False
+region: None
+bedFile: None
+minMappingQuality: None
+ignoreDuplicates: False
+chrsToSkip: []
+stepSize: 20
+center_read: False
+samFlag_include: None
+samFlag_exclude: None
+minFragmentLength: 0
+maxFragmentLength: 0
+zerosToNans: False
+smoothLength: None
+save_data: False
+out_file_for_raw_data: None
+maxPairedFragmentLength: 1000
+
+(Deeptools_April2020) 4617-S5_bw % bamCoverage -b ../4617_bam/4617-MB-6.hg19.32120.sorted.F4q10.bam -bs 20 -p 6 -of 'bigwig' -o Kas_flag_S5_minusdT.B.normTC.bs20.bw --scaleFactor 0.9587
+bamFilesList: ['../4617_bam/4617-MB-6.hg19.32120.sorted.F4q10.bam']
+binLength: 20
+numberOfSamples: None
+blackListFileName: None
+skipZeroOverZero: False
+bed_and_bin: False
+genomeChunkSize: None
+defaultFragmentLength: read length
+numberOfProcessors: 6
+verbose: False
+region: None
+bedFile: None
+minMappingQuality: None
+ignoreDuplicates: False
+chrsToSkip: []
+stepSize: 20
+center_read: False
+samFlag_include: None
+samFlag_exclude: None
+minFragmentLength: 0
+maxFragmentLength: 0
+zerosToNans: False
+smoothLength: None
+save_data: False
+out_file_for_raw_data: None
+maxPairedFragmentLength: 1000
+
+(Deeptools_April2020)  4617-S5_bw % bamCoverage -b ../4617_bam/4617-MB-7.hg19.sorted.F4q10.bam -bs 20 -p 6 -of 'bigwig' -o Kas_flag_S5_plusdT.A.normTC.bs20.bw --scaleFactor 1.0449
+bamFilesList: ['../4617_bam/4617-MB-7.hg19.sorted.F4q10.bam']
+binLength: 20
+numberOfSamples: None
+blackListFileName: None
+skipZeroOverZero: False
+bed_and_bin: False
+genomeChunkSize: None
+defaultFragmentLength: read length
+numberOfProcessors: 6
+verbose: False
+region: None
+bedFile: None
+minMappingQuality: None
+ignoreDuplicates: False
+chrsToSkip: []
+stepSize: 20
+center_read: False
+samFlag_include: None
+samFlag_exclude: None
+minFragmentLength: 0
+maxFragmentLength: 0
+zerosToNans: False
+smoothLength: None
+save_data: False
+out_file_for_raw_data: None
+maxPairedFragmentLength: 1000
+
+(Deeptools_April2020) 4617-S5_bw % bamCoverage -b ../4617_bam/4617-MB-8.hg19.sorted.F4q10.bam -bs 20 -p 6 -of 'bigwig' -o Kas_flag_S5_plusdT.B.normTC.bs20.bw --scaleFactor 0.9337
+bamFilesList: ['../4617_bam/4617-MB-8.hg19.sorted.F4q10.bam']
+binLength: 20
+numberOfSamples: None
+blackListFileName: None
+skipZeroOverZero: False
+bed_and_bin: False
+genomeChunkSize: None
+defaultFragmentLength: read length
+numberOfProcessors: 6
+verbose: False
+region: None
+bedFile: None
+minMappingQuality: None
+ignoreDuplicates: False
+chrsToSkip: []
+stepSize: 20
+center_read: False
+samFlag_include: None
+samFlag_exclude: None
+minFragmentLength: 0
+maxFragmentLength: 0
+zerosToNans: False
+smoothLength: None
+save_data: False
+out_file_for_raw_data: None
+maxPairedFragmentLength: 1000
+
+
+##Merging new bigwig files 
+
+
+bigWigMerge Kas_flag_S5_minusdT.A.normTC.bs20.bw Kas_flag_S5_minusdT.B.normTC.bs20.bw Kas_flag_S5_minusdT.merged.normTC.bedGraph 
+ 
+sort -k1,1 -k2,2n Kas_flag_S5_minusdT.merged.normTC.bedGraph > Kas_flag_S5_minusdT.merged.normTC.sorted.bedGraph
+
+bedGraphToBigWig Kas_flag_S5_minusdT.merged.normTC.sorted.bedGraph /Users/monicabomber/bin/homer/data/genomes/hg19/chrom.sizes Kas_flag_S5_minusdT.merged.normTC.bw
+
+bigWigMerge Kas_flag_S5_plusdT.A.normTC.bs20.bw Kas_flag_S5_plusdT.B.normTC.bs20.bw Kas_flag_S5_plusdT.merged.normTC.bedGraph 
+
+sort -k1,1 -k2,2n Kas_flag_S5_plusdT.merged.normTC.bedGraph > Kas_flag_S5_plusdT.merged.normTC.sorted.bedGraph
+
+bedGraphToBigWig Kas_flag_S5_plusdT.merged.normTC.sorted.bedGraph  /Users/monicabomber/bin/homer/data/genomes/hg19/chrom.sizes Kas_flag_S5_plusdT.merged.normTC.bw
+```
